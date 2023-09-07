@@ -6,7 +6,9 @@ Description :
 It's a platform for tasking and evaluating, and rewarding outstanding performance, developed for companies to foster a culture of appreciation and motivation of employees. 
 
 Features List:
+
 1.Staff members have identified each other and exchanged appreciation and comments across the platform.
+
 2.Managers and colleagues can provide constructive guidance and recognize the distinct achievements of staff.
 
 3. Point-based rewards:
