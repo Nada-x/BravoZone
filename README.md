@@ -2,7 +2,8 @@
 
 Project Name : BravoZone
 
-Description :
+Project Description :
+
 It's a platform for tasking and evaluating, and rewarding outstanding performance, developed for companies to foster a culture of appreciation and motivation of employees. 
 
 Features List:
@@ -31,11 +32,13 @@ Features List:
 - Advanced safety features are available to protect personal data and sensitive information.
 - Design the platform in a user-friendly manner that allows a user &apos; s experience that is comfortable and self-evident for managers and staff.
 
+Website Wireframe :
 
+https://www.canva.com/design/DAFtwJrs9XU/eN_YQ5nnB2fHCpDeD3WqEw/edit?utm_content=DAFtwJrs9XU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 
 Team Members:
-* Nada Almutairi
+* Nada Almutairi (Leader)
 * Ghaida Allhyani
 * Manal Alzahrani
 * Basmah Alshahrani
