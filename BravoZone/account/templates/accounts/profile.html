@@ -1,0 +1,14 @@
+<h1>{{ profile_user.username }}</h1>
+{% with profile_user.education.all|first as education %}
+<img src="{{ education.profile_picture.url }}" style="width: 150px;" alt="Profile Picture">
+<p>Employee Number: {{ profile_user.employee_number }}</p>
+<p>Email: {{ profile_user.email }}</p>
+<p>Skills: {{ profile_user.skills }}</p>
+<p>University: {{ education.university_name }}</p>
+<p>Major: {{ education.major }}</p>
+<p>Degree: {{ education.degree }}</p>
+<p>Academic Rank: {{ education.academic_rank }}</p>
+{% endwith %}
+{% if user.username == profile_user.username %}
+<a href="{% url 'account:logout' %}">Logout</a>
+{% endif %}
