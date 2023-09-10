@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, EducationalQualification
+from .models import Skill, User, EducationalQualification
 
 class SignUpForm(UserCreationForm):
     ROLE_CHOICES=(
@@ -18,6 +18,11 @@ class EducationalQualificationForm(forms.ModelForm):
     class Meta:
         model = EducationalQualification
         fields = ['university_name', 'major', 'degree', 'academic_rank', 'profile_picture']
+
+class SkillForm(forms.ModelForm):
+    class Meta:
+        model = Skill
+        fields = ['name']
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=100)
