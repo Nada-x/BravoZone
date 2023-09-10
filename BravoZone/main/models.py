@@ -1,37 +1,28 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+from account.models import User
+from django.conf import settings
 
 
-# Create your models here.
-
-class Achievement(models.Model):
-    
-    title = models.CharField(max_length=200)
+class PreviousProject(models.Model):
+    title = models.CharField(max_length=255)
     content = models.TextField()
-    image = models.ImageField(upload_to="images/", default="images/default.jpg")
-    link = models.URLField(blank=True)
-    Achievement_date = models.DateField(default="2000-10-10")
-    
-    
-class Comment(models.Model):
-    
-    
-    achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='previous_projects/')
+    link = models.URLField()
+    date = models.DateField()
 
+    def __str__(self):
+        return self.title
+
+
+class Comment(models.Model):
+    project = models.ForeignKey(PreviousProject, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
-        return f"{self.user.first_name} on {self.achievement.title}"
-    
-    
-    
-  
-    
-        
-
-    
-
+        return f"Comment by {self.user.username} on {self.project.title}"
 
 
