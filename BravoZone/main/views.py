@@ -22,7 +22,7 @@ def add_previous_project(request):
             return redirect('previous_projects')
     else:
         form = PreviousProjectForm()
-    return render(request, 'add_previous_project.html', {'form': form})
+    return render(request, 'main/add_previous_project.html', {'form': form})
 
 def add_comment(request, project_id):
     project = get_object_or_404(PreviousProject, pk=project_id)
@@ -36,4 +36,4 @@ def add_comment(request, project_id):
             return redirect('project_detail', project_id=project_id)
     else:
         form = CommentForm()
-    return render(request, 'add_comment.html', {'form':form, 'project': project})
+    return render(request, 'main/add_comment.html', {'form':form, 'project': project})
