@@ -5,6 +5,6 @@ app_name= "main"
 
 urlpatterns=[
     path('' , views.home_view, name= "home_view"),
-    path('profile/<employee_id>/' , views.profile_detail_view, name="profile_detail_view")
+    path('profile/' , views.profile_detail_view, name="profile_detail_view")
 ]
 
