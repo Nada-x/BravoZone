@@ -10,7 +10,7 @@ class User(AbstractUser):
         return self.username
 
 class EducationalQualification(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True ,null=True , related_name='education')
     university_name = models.CharField(max_length=100)
     major = models.CharField(max_length=100)
     degree = models.CharField(max_length=50)

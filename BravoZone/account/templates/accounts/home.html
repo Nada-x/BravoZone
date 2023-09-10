@@ -8,15 +8,17 @@
     <ul>
         {% for user in users %}
             <li>
+                 {% with user.education.all|first as education  %}
                 <h2>{{ user.username }}</h2>
-                <img src="{{ user.user.educationalqualification.profile_picture.url }}" alt="Profile Picture">
+                <img src="{{ education.profile_picture.url }}" alt="Profile Picture">
                 <p>Employee Number: {{ user.employee_number }}</p>
                 <p>Email: {{ user.email }}</p>
                 <p>Skills: {{ user.skills }}</p>
-                <p>University: {{ user.user.educationalqualification.university_name }}</p>
-                <p>Major: {{ user.user.educationalqualification.major }}</p>
-                <p>Degree: {{ user.user.educationalqualification.degree }}</p>
-                <p>Academic Rank: {{ user.user.educationalqualification.academic_rank }}</p>
+                <p>University: {{ education.university_name }}</p>
+                <p>Major: {{ education.major }}</p>
+                <p>Degree: {{ education.degree }}</p>
+                <p>Academic Rank: {{ education.academic_rank }}</p>
+                {% endwith %}
             </li>
             <a href="{% url 'account:logout' %}">Logout</a>
         {% endfor %}
