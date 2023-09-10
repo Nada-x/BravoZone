@@ -12,16 +12,8 @@ def home_view(request : HttpRequest):
     return render(request, "main/home_view.html")
 
 
-def profile_detail_view(request : HttpRequest, employee_id):
+def profile_detail_view(request : HttpRequest):
     
-    #to get a single entry in the database
-    
-    achievement = Achievement.objects.get(id=employee_id)
-    comments = Comment.objects.filter(achievement=achievement)
-
-    if request.method == "POST" and request.user.is_authenticated:
-       new_comment = Comment(achievement=achievement, user=request.user, content=request.POST["content"])
-       new_comment.save()
-
-    return render(request, "main/profile.html", {"achievement" : achievement, "comments" : comments, "Comment" : Comment})
+   
+    return render(request, "main/profile.html")
 
