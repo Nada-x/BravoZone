@@ -38,6 +38,7 @@ def signup(request):
         "accounts/signup.html",
         {"user_form": user_form, "qualification_form": qualification_form},
     )
+ 
 
 def login_view(request):
     if not request.user.is_authenticated:
