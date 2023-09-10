@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Detail</title>
+</head>
+<body>
+    <h1>Task Detail</h1>
+    <p><strong>Name:</strong> {{ task.name }}</p>
+    <p><strong>Content:</strong> {{ task.content }}</p>
+    <p><strong>Start Time:</strong> {{ task.start_time }}</p>
+    <p><strong>End Time:</strong> {{ task.end_time }}</p>
+    <p><strong>Points:</strong> {{ task.points }}</p>
+    <p><strong>Status:</strong> {{ task.status }}</p>
+
+    {% if task.status != 'completed' %}
+        <form method="POST" action="{% url 'evaluation:update_task_status' task.id %}">
+            {% csrf_token %}
+            <select name="status">
+                <option value="completed">Completed</option>
+                <option value="in_progress">In Progress</option>
+                <option value="not_started">Not Started</option>
+            </select>
+            <button type="submit">Save</button>
+        </form>
+    {% endif %}
+
+    <a href="{% url 'evaluation:task_list' %}">Back</a>
+</body>
+</html>
