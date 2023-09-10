@@ -1510,6 +1510,16 @@ section {
   padding: 30px;
   text-align: center;
 }
+.nav-stacked{
+  background-color: white;
+  font-size: 15px;
+  
+}
+.nav-stacked .el{
+  background-color: white;
+  padding: 12px;
+  
+}
 
 .profile-nav .user-heading.round a  {
   border-radius: 50%;
