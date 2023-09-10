@@ -1481,3 +1481,14 @@ section {
 }
 
 /* profile*/
+/*login */
+.login{
+  margin-top:  100px; 
+  padding-top: 50px;
+}
+.txt{
+  color: #0062cc;
+}
+.fontsize{
+  font-size: smaller;
+}
