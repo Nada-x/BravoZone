@@ -1497,7 +1497,11 @@ section {
 .profile-nav, .profile-info{
   margin-top:30px;   
 }
+.project{
+  background-color: #00428a !important;
+  
 
+}
 .profile-nav .user-heading {
   background: #00428a;
   color: #fff;
