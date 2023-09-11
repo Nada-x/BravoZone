@@ -32,3 +32,5 @@ def add_comment(request, project_id):
     else:
         form = CommentForm()
     return render(request, 'main/add_comment.html', {'form':form, 'project': project})
+def leader_bord(request):
+        return render(request, "main/leader_bord.html")

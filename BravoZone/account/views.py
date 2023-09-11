@@ -71,6 +71,7 @@ def profile(request, user_id=''):
     return render(request, "accounts/profile.html", { 'profile_user': profile_user })
 
 def all_emploee(request):
+
     
     return render(request, "accounts/all_employee.html")
         
@@ -80,3 +81,8 @@ def edit_profile(request, user_id=''):
     else:
         profile_user = request.user
     return render(request, "accounts/edit_profile.html", { 'profile_user': profile_user })
+
+    users = User.objects.filter(is_superuser=False, is_staff=False)
+
+    return render(request, "accounts/all_employee.html",{"users": users})
+        

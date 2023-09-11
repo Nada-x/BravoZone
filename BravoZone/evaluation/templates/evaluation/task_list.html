@@ -1,8 +1,8 @@
 {% extends 'main/base.html' %}
 {% block title %} Home  {% endblock %}
 {% block content %}
-
-<section class="vh-100 gradient-custom-2 mb-5"> 
+<div class="container">
+  <section class="vh-100 gradient-custom-2 mb-5 employee"> 
     <div class="card-footer text-end p-3">
     
     </div>
@@ -10,24 +10,20 @@
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-12 col-xl-10">
-            <div class="card-footer text-end p-3">
-    
-                <button class="btn btn-primary">Add Task</button>
-              </div>
+            
   
-          <div class="card mask-custom">
-            <div class="card-body p-4 text-white">
+          <div class="card ">
+            <div class="card-body p-4 ">
   
-              <div class="text-center pt-3 pb-2">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
-                  alt="Check" width="60">
-                <h2 class="my-4">Task List</h2>
+              <div class="text-center pt-3 pb-2 d-flex justify-content-center ">
+                
+                <h2 class="text-black mb-5"> <span><i class="bi bi-list-task"></i></span> Task List </h2>
               </div>
   
               <table class="table text-white mb-0">
                 <thead>
                   <tr>
-                    <th scope="col">Team Member</th>
+                    <th scope="col">Employee</th>
                     <th scope="col">Task</th>
                     <th scope="col">Status</th>
                     <th scope="col"></th>
@@ -98,7 +94,7 @@
       </div>
     </div>
   </section>
-
+</div>
 {%endblock%}
 
 
