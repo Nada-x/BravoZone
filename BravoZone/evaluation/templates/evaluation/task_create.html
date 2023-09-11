@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +6,35 @@
 </head>
 <body>
     <h1>Create Task</h1>
-    <form method="POST" action="{% url 'evaluation:task_create' %}">
+    <form method="post" action="{% url 'evaluation:task_create' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        <label for="id_name">Name:</label>
+        {{ form.name }}
+        <br>
+        <label for="id_content">Content:</label>
+        {{ form.content }}
+        <br>
+        <label for="id_start_time">Start Time:</label>
+        {{ form.start_time }}
+        <br>
+        <label for="id_end_time">End Time:</label>
+        {{ form.end_time }}
+        <br>
+        <label for="id_points">Points:</label>
+        {{ form.points }}
+        <br>
+        <label for="id_status">Status:</label>
+        {{ form.status }}
+        <br>
+        <label for="id_assigned_to">Assigned To:</label>
+        
+        <select name="assigned_to" required id="id_assigned_to">
+            <option value="" selected>---------</option>
+            {% for employee in employees %}
+            <option value="{{ employee.id }}">{% if employee.first_name %} {{ employee.first_name }} {{employee.last_name}} {% else %} {{ employee.username }} {% endif %} </option>
+          {% endfor %}
+          </select>
+        <br>
         <button type="submit">Create</button>
     </form>
 </body>

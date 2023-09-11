@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
+
+from account.models import User
 from .models import Task
 from .forms import TaskForm
 
@@ -12,8 +14,17 @@ def task_create(request):
             form.save()
             return redirect('evaluation:task_list')
     else:
-        form = TaskForm(initial={'assigned_to': request.GET['assigned_to']})
-    return render(request, 'evaluation/task_create.html', {'form': form})
+        employees = User.objects.filter(is_superuser=False, is_staff=False)
+
+        if request.method == 'GET' and 'assigned_to' in request.GET:
+            assigned_to = request.GET['assigned_to']
+            if assigned_to is not None and assigned_to != '':
+                form = TaskForm(initial={'assigned_to': request.GET['assigned_to']})
+            else:
+                form = TaskForm()
+        else:
+            form = TaskForm()
+    return render(request, 'evaluation/task_create.html', {'form': form, 'employees': employees})
 
 
 def task_list(request):
