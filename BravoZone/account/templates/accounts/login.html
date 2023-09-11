@@ -11,19 +11,18 @@
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <h1 class="text-center txt fw-bold">Login </h1>
-              <form action="{% url 'account:login' %}"  method="post">
+              <form method="post" action="{% url 'account:login' %}">
                 {% csrf_token %}
               <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <label class="form-label txt fw-bold" for="form3Example3">UserName </label>
-                    <input type="text" name="username" class="form-control form-control-lg fontsize" placeholder="Enter a valid UserName" />
+                  <label class="form-label txt fw-bold" for="id_username">Username</label>
+                  {{ form.username }}
                 </div>
       
                 <!-- Password input -->
                 <div class="form-outline mb-3">
-                  <label class="form-label txt fw-bold" for="form3Example4">Password</label>
-                  <input type="password" id="form3Example4" class="form-control form-control-lg fontsize"
-                    placeholder="Enter password" />
+                  <label class="form-label txt fw-bold" for="id_password">Password:</label>
+                  {{ form.password }}
                 </div>
                 <div class="text-center text-lg-start mt-4 pt-2">
                   <button type="submit" class="btn btn-primary btn-lg"
@@ -40,8 +39,8 @@
 
  {%endblock%}
 
-<form method="post" action="{% url 'account:login' %}">
+{% comment %} <form method="post" action="{% url 'account:login' %}">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Login</button>
-</form>
+</form> {% endcomment %}
