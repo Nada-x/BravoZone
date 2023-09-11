@@ -71,6 +71,7 @@ def profile(request, user_id=''):
     return render(request, "accounts/profile.html", { 'profile_user': profile_user })
 
 def all_emploee(request):
-    
-    return render(request, "accounts/all_employee.html")
+    users = User.objects.filter(is_superuser=False, is_staff=False)
+
+    return render(request, "accounts/all_employee.html",{"users": users})
         
