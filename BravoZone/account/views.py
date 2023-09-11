@@ -69,4 +69,8 @@ def profile(request, user_id=''):
     else:
         profile_user = request.user
     return render(request, "accounts/profile.html", { 'profile_user': profile_user })
+
+def all_emploee(request):
+    
+    return render(request, "accounts/all_employee.html")
         
