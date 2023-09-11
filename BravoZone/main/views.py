@@ -9,11 +9,6 @@ def home_view(request : HttpRequest):
 
     return render(request, "main/home_view.html")
 
-
-def profile_detail_view(request : HttpRequest):
-    
-   
-    return render(request, "main/profile.html")
 def add_previous_project(request):
     if request.method == 'POST':
         form = PreviousProjectForm(request.POST, request.FILES)

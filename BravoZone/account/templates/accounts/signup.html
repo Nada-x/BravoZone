@@ -1,53 +1,57 @@
 {% extends 'main/base.html' %}
-{% block title %} Home  {% endblock %}
+{% block title %} Sign Up  {% endblock %}
 {% block content %}
 <div class="container login">
-      <section class="vh-100">
-        <div class="container-fluid h-custom">
-          <div class="row d-flex justify-content-center align-items-center h-100">
+  <section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                 class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <h1 class="text-center txt fw-bold">Signup </h1>
-              <form action="{% url 'account:signup' %}"  method="post">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <label class="form-label txt fw-bold fontsize" for="form3Example3">Company Name </label>
-                        <input type="text" name="companyName" class="form-control mt-2 fontsize" placeholder="Company Name" />
-                        <label class="form-label txt fw-bold fontsize mt-3" for="form3Example3">Date of Establishment</label>
-                        <input type="date" name="date" class="form-control mt-2 fontsize" placeholder="Date of Establishment " />
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <label class="form-label txt fw-bold fontsize " for="form3Example3">Manger Name</label>
-                        <input type="text" name="companyName" class="form-control mt-2 fontsize" placeholder="Manger Name" />
-                        <label class="form-label txt fw-bold fontsize mt-3" for="form3Example3">Commerical Register</label>
-                        <input type="text" name="date" class="form-control mt-2 fontsize" placeholder="Commerical Register  " />
-                    </div>
-                </div>
-              <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <label class="form-label txt fw-bold fontsize" for="form3Example3">Email address</label>
-                  <input type="email" id="form3Example3" class="form-control form-control-lg fontsize"
-                    placeholder="Enter a valid email address" />
-                </div>
-                <!-- Password input -->
-                <div class="form-outline mb-3">
-                  <label class="form-label txt fw-bold fontsize" for="form3Example4">Password</label>
-                  <input type="password" id="form3Example4" class="form-control form-control-lg fontsize"
-                    placeholder="Enter password" />
-                </div>
-                <div class="text-center  mt-4 pt-2">
-                  <button type="submit" class="btn btn-primary btn-lg "
-                    style="padding-left: 2.5rem; padding-right: 2.5rem; ">Signup</button>
-                </div>
-              </form>
-            </div>
-          </div>
+                <h1 class="text-center txt fw-bold">Signup </h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6 mb-4">
+            <label class="form-label txt fw-bold fontsize" for="id_username">Username:</label>
+          {{ user_form.username }} 
+            <label for="id_password1" class="form-label txt fw-bold fontsize">Password:</label>
+            {{ user_form.password1 }}
+            <label for="id_employee_number" class="form-label txt fw-bold fontsize">Employee Number:</label>
+            {{ user_form.employee_number }}
+            <label for="id_role"class="form-label txt fw-bold fontsize mt-4">Role:</label>
+            {{ user_form.role }}
+            <label for="id_major"class="form-label txt fw-bold fontsize">Major:</label>
+            {{ qualification_form.major }}
+            <label for="id_degree"class="form-label txt fw-bold fontsize">Degree:</label>
+            {{ qualification_form.degree }}
+            <label for="id_profile_picture"class="form-label txt fw-bold fontsize">Profile Picture:</label>
+            {{ qualification_form.profile_picture }}
         </div>
-      </section>
+        <div class="col-md-6 mb-4">
+            <label for="id_email"class="form-label txt fw-bold fontsize">Email:</label>
+            {{ user_form.email }} 
+            <label for="id_password2"class="form-label txt fw-bold fontsize">Confirm Password:</label>
+            {{ user_form.password2 }}
+            <label for="id_skills"class="form-label txt fw-bold fontsize">Skills:</label>
+            {{ user_form.skills }}
+            <label for="id_university_name"class="form-label txt fw-bold fontsize">University Name:</label>
+            {{ qualification_form.university_name }}
+            <label for="id_academic_rank"class="form-label txt fw-bold fontsize">Academic Rank:</label>
+            {{ qualification_form.academic_rank }}
+           
+        </div>
+        <div class="text-center  mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg "
+              style="padding-left: 2.5rem; padding-right: 2.5rem; ">Signup</button>
+          </div>
+        <!-- <input type="submit" value="Sign Up"> -->
+    </form>
+</div>
+</div>
+</div>
+  </section>
   </div>
-
- {%endblock%}
+{%endblock%}
