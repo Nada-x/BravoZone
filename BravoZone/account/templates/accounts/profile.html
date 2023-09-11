@@ -1,70 +1,72 @@
-
 {% extends 'main/base.html' %}
-{% block title %} profile  {% endblock %}
+{% block title %} profile {% endblock %}
 {% block content %}
-    <section id="" class="profile">
-        <div class="container m-5">
-            <div class="container bootstrap snippets bootdey">
-                <div class="row">
-                  <div class="profile-nav col-md-3">
-                      <div class="panel">
-                          <div class="user-heading round">
-                           {% with profile_user.education.all|first as education %}
-                              <a href="#">
-                                 <img src="{{ education.profile_picture.url }}" style="width: 150px;" alt="Profile Picture">
-                                                                </a>
-                                    <h1>{{ profile_user.username }}</h1>
-                                    <p>{{ profile_user.email }}</p>
-                          </div>
-                                    <ul class="nav nav-pills nav-stacked d-flex  ">
-                                        <li class="active me-5 el col-12 "><a href="#"> <i class="fa fa-user ps-2  "></i> Profile </a></li>
-                                        <li class=" el col-12"><a href="#"> <i class="fa fa-calendar ps-2 "></i> project</a></li>
-                                        <li class=" el col-12"><a href="#"> <i class="fa fa-edit ps-2 "></i> Edit profile</a></li>
-                                    </ul>
-                      </div>
+<section id="" class="profile">
+    <div class="container m-5">
+        <div class="container bootstrap snippets bootdey">
+            <div class="row">
+                <div class="profile-nav col-md-3">
+                    <div class="panel">
+                        <div class="user-heading round">
+                            {% with profile_user.education.all|first as education %}
+                            <a href="#">
+                                <img src="{{ education.profile_picture.url }}" style="width: 150px;"
+                                    alt="Profile Picture">
+                            </a>
+                            <h1>{{ profile_user.username }}</h1>
+                            <p>{{ profile_user.email }}</p>
+                        </div>
+                        <ul class="nav nav-pills nav-stacked d-flex  ">
+                            <li class="active me-5 el col-12 "><a href="#"> <i class="fa fa-user ps-2  "></i> Profile
+                                </a></li>
+                            <li class=" el col-12"><a href="{% url 'account:edit_profile' %}"> <i class="fa fa-edit ps-2 "></i> Edit profile</a></li>
+                            <li class=" el col-12"><a href="#"> <i class="bi bi-chat-dots-fill ps-2 "></i>chat</a></li>
+
+                        </ul>
                     </div>
-                        <div class="profile-info col-md-9">
-                            
-                            <div class="panel">
-                                <div class="bio-graph-heading">
-                                   ++add نبذة عنه Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.
-                                </div>
+                </div>
+                <div class="profile-info col-md-9">
+
+                    <div class="panel">
+                        <div class="bio-graph-heading">
+                            ++add نبذة عنه Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel
+                            ispum. Aliquam ac magna metus.
+                        </div>
                         <div class="panel-body bio-graph-info p-5">
-                        <h1>University:{{ education.university_name }}</h1>
-                        <div class="row">
-                        <div class="bio-row">
-                            <p><span>Name </span>:{{ profile_user.employee_number }}</p>
+                            <h1>University:{{ education.university_name }}</h1>
+                            <div class="row">
+                                <div class="bio-row">
+                                    <p><span>Name </span>:{{ profile_user.employee_number }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Email Employee</span>:{{ profile_user.email }}</p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Skills Employee </span>
+                                    <ul>
+                                        {% for Skill in profile_user.skills.all %}
+                                        :{{ Skill.name }}</p>
+                                        {% endfor %}
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Major Academic </span>: {{ education.major }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bio-row">
-                        <p><span>Email Employee</span>:{{ profile_user.email }}</p>
-                        </div>
-                        <div class="bio-row">
-                        <p><span>Skills Employee </span>
-                            <ul>
-                                {% for Skill in profile_user.skills.all %}
-                                :{{ Skill.name }}</p>
-                                {% endfor %}
-                        </div>
-                        <div class="bio-row">
-                        <p><span>Major Academic </span>: {{ education.major }}</p>
-                        </div>
-                        <div class="bio-row">
-                        <p><span>DegreeAcademic</span> : {{ education.degree }}</p>
-                        </div>
-                        <div class="bio-row">
-                        <p><span>Academic Rank</span>: {{ education.academic_rank }}</p>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        <div>
+                    </div>
+                    <div>
                         {% endwith %}
                         <div class="row ">
                             <div class="col-md-6 panel-body p-3 m-3 ">
                                 <div class="panel">
                                     <div class="">
                                         <div class="bio-chart">
-                                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="35" data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(224, 107, 125); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                                            <div style="display:inline;width:100px;height:100px;"><canvas width="100"
+                                                    height="100px"></canvas><input class="knob" data-width="100"
+                                                    data-height="100" data-displayprevious="true" data-thickness=".2"
+                                                    value="35" data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8"
+                                                    style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(224, 107, 125); padding: 0px; -webkit-appearance: none; background: none;">
+                                            </div>
                                         </div>
                                         <div class="bio-desk">
                                             <h4 class="red">Envato Website</h4>
@@ -78,7 +80,12 @@
                                 <div class="panel">
                                     <div class="">
                                         <div class="bio-chart">
-                                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="63" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                                            <div style="display:inline;width:100px;height:100px;"><canvas width="100"
+                                                    height="100px"></canvas><input class="knob" data-width="100"
+                                                    data-height="100" data-displayprevious="true" data-thickness=".2"
+                                                    value="63" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8"
+                                                    style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;">
+                                            </div>
                                         </div>
                                         <div class="bio-desk">
                                             <h4 class="terques">ThemeForest CMS </h4>
@@ -92,7 +99,12 @@
                                 <div class="panel">
                                     <div class="">
                                         <div class="bio-chart">
-                                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="75" data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(150, 190, 75); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                                            <div style="display:inline;width:100px;height:100px;"><canvas width="100"
+                                                    height="100px"></canvas><input class="knob" data-width="100"
+                                                    data-height="100" data-displayprevious="true" data-thickness=".2"
+                                                    value="75" data-fgcolor="#96be4b" data-bgcolor="#e8e8e8"
+                                                    style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(150, 190, 75); padding: 0px; -webkit-appearance: none; background: none;">
+                                            </div>
                                         </div>
                                         <div class="bio-desk">
                                             <h4 class="green">VectorLab Portfolio</h4>
@@ -106,7 +118,12 @@
                                 <div class="panel">
                                     <div class="">
                                         <div class="bio-chart">
-                                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="50" data-fgcolor="#cba4db" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(203, 164, 219); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                                            <div style="display:inline;width:100px;height:100px;"><canvas width="100"
+                                                    height="100px"></canvas><input class="knob" data-width="100"
+                                                    data-height="100" data-displayprevious="true" data-thickness=".2"
+                                                    value="50" data-fgcolor="#cba4db" data-bgcolor="#e8e8e8"
+                                                    style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(203, 164, 219); padding: 0px; -webkit-appearance: none; background: none;">
+                                            </div>
                                         </div>
                                         <div class="bio-desk">
                                             <h4 class="purple">Adobe Muse Template</h4>
@@ -118,78 +135,81 @@
                             </div>
                         </div>
                         <div class="row">
-                        
-                        <div class="col-md-6 panel-body ps-0 pe-0 m-3">
-                            
-                            <div class="panel">
-                                <div class="panel p-2 text-light" style="  background-color: #00428a"> 
-                                    <h5 class="  ">Experience</h5>
 
-                                </div>
-                                <div class="">
-                                
-                                    <div class="bio-chart p-4">
-                                        <h6>course name</h6>
+                            <div class="col-md-6 panel-body ps-0 pe-0 m-3">
+
+                                <div class="panel">
+                                    <div class="panel p-2 text-light" style="  background-color: #00428a">
+                                        <h5 class="  ">Experience</h5>
 
                                     </div>
-                                    <div class="bio-desk p-3">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
-                                </div>
-                                <div class="">
-                                
-                                    <div class="bio-chart p-4">
-                                        <h6>course name</h6>
+                                    <div class="">
 
+                                        <div class="bio-chart p-4">
+                                            <h6>course name</h6>
+
+                                        </div>
+                                        <div class="bio-desk p-3">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        </div>
                                     </div>
-                                    <div class="bio-desk p-3">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <div class="">
+
+                                        <div class="bio-chart p-4">
+                                            <h6>course name</h6>
+
+                                        </div>
+                                        <div class="bio-desk p-3">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-                            
-                        </div>
-                        <div class="col-md-5 panel-body ps-0 pe-0 m-3">
-                            
-                            <div class="panel">
-                                <div class="panel p-2 text-light" style="  background-color: #00428a"> 
-                                    <h5 class="  ">Course </h5>
+                            <div class="col-md-5 panel-body ps-0 pe-0 m-3">
 
-                                </div>
-                                <div class="">
-                                
-                                    <div class="bio-chart p-4">
-                                        <h6>Creative Arts  </h6>
+                                <div class="panel">
+                                    <div class="panel p-2 text-light" style="  background-color: #00428a">
+                                        <h5 class="  ">Course </h5>
 
                                     </div>
-                                    <div class="bio-desk p-3">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <div class="">
+
+                                        <div class="bio-chart p-4">
+                                            <h6>Creative Arts </h6>
+
+                                        </div>
+                                        <div class="bio-desk p-3">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-                            
                         </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                        </div>
-                        </section>
-                        {%endblock%}
+    </div>
+</section>
+{%endblock%}
 
-                        {% comment %} <h1>{{ profile_user.username }}</h1>
-                        {% with profile_user.education.all|first as education %}
-                        <img src="{{ education.profile_picture.url }}" style="width: 150px;" alt="Profile Picture">
-                        <p>Employee Number: {{ profile_user.employee_number }}</p>
-                        <p>Email: {{ profile_user.email }}</p>
-                        <p>Skills: {{ profile_user.skills }}</p>
-                        <p>University: {{ education.university_name }}</p>
-                        <p>Major: {{ education.major }}</p>
-                        <p>Degree: {{ education.degree }}</p>
-                        <p>Academic Rank: {{ education.academic_rank }}</p>
-                        {% endwith %}
-                        {% if user.username == profile_user.username %}
-                        <a href="{% url 'account:logout' %}">Logout</a>
-                        {% endif %} {% endcomment %}
+{% comment %} <h1>{{ profile_user.username }}</h1>
+{% with profile_user.education.all|first as education %}
+<img src="{{ education.profile_picture.url }}" style="width: 150px;" alt="Profile Picture">
+<p>Employee Number: {{ profile_user.employee_number }}</p>
+<p>Email: {{ profile_user.email }}</p>
+<p>Skills: {{ profile_user.skills }}</p>
+<p>University: {{ education.university_name }}</p>
+<p>Major: {{ education.major }}</p>
+<p>Degree: {{ education.degree }}</p>
+<p>Academic Rank: {{ education.academic_rank }}</p>
+{% endwith %}
+{% if user.username == profile_user.username %}
+<a href="{% url 'account:logout' %}">Logout</a>
+{% endif %} {% endcomment %}

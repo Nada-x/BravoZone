@@ -74,3 +74,9 @@ def all_emploee(request):
     
     return render(request, "accounts/all_employee.html")
         
+def edit_profile(request, user_id=''):
+    if user_id:
+        profile_user = User.objects.get(pk=user_id)
+    else:
+        profile_user = request.user
+    return render(request, "accounts/edit_profile.html", { 'profile_user': profile_user })

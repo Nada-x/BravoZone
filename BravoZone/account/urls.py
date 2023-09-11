@@ -11,5 +11,5 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("profile/<int:user_id>", views.profile, name="user_profile"),
     path("all/employee/", views.all_emploee, name="all_emploee"),
-
+    path("edit/", views.edit_profile, name="edit_profile"),
 ]
