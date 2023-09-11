@@ -2069,3 +2069,23 @@ ul.summary-list > li:last-child  {
   left: 0;
   z-index: 10;
 }
+=======
+
+
+/*  Section Task list
+--------------------------------*/
+
+
+.my-4{
+  color: black;
+}
+
+.mask-custom {
+background: rgba(24, 24, 16, 0.2);
+border-radius: 2em;
+backdrop-filter: blur(25px);
+border: 2px solid rgba(255, 255, 255, 0.05);
+background-clip: padding-box;
+box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
+>>>>>>> a9ad76da91443e8a1fca0092e9fc6ec0abbf0830
