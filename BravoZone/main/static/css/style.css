@@ -2087,3 +2087,94 @@ border: 2px solid rgba(255, 255, 255, 0.05);
 background-clip: padding-box;
 box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
 }
+/*Add Task page:*/
+.patask{
+  margin-top: 100px;
+}
+.borderr{
+  background-color: white;
+  padding-bottom: 40px;
+  border: 3px solid;
+  border-color: #0062cc;
+  border-radius: 40px;
+}
+
+.labeldes{
+  background-color: #efeeee;
+  border-radius: 20px;
+}
+.date{
+  text-decoration-line: underline;
+}
+.herotask{
+  width: 100%;
+  position: relative;
+  background: url("../img/hero-bg.png") center bottom no-repeat;
+  background-size: cover;
+  padding: 20px 0 20px 0;
+}
+/*-------- button for add task ----------*/
+.button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0.6em 2em;
+  border: #0062cc solid 0.15em;
+  border-radius: 0.55em;
+  color: #0062cc;
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border 300ms, color 300ms;
+  user-select: none;
+  height: 20px;
+}
+
+.button p {
+  z-index: 1;
+  padding-top: 25px;
+}
+
+.button:hover {
+  color: #ffffff;
+}
+
+.button:active {
+  border-color: #0062cc;
+}
+
+.button::after, .button::before {
+  content: "";
+  position: absolute;
+  width: 9em;
+  aspect-ratio: 1;
+  background: #0062cc;
+  opacity: 50%;
+  border-radius: 80%;
+  transition: transform 500ms, background 300ms;
+}
+
+.button::before {
+  left: 0;
+  transform: translateX(-8em);
+}
+
+.button::after {
+  right: 0;
+  transform: translateX(8em);
+}
+
+.button:hover:before {
+  transform: translateX(-1em);
+}
+
+.button:hover:after {
+  transform: translateX(1em);
+}
+
+.button:active:before,
+.button:active:after {
+  background: #0062cc;
+}
