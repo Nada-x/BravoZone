@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
 class Skill(models.Model):
     name = models.CharField(max_length=50)
 
@@ -23,6 +22,7 @@ class EducationalQualification(models.Model):
         User, on_delete=models.CASCADE, blank=True, null=True, related_name="education"
     )
     skills = models.ManyToManyField(Skill, blank=True)
+    # skills_list = models.(models.CharField(max_length=255))
     university_name = models.CharField(max_length=100)
     major = models.CharField(max_length=100)
     degree = models.CharField(max_length=50)

@@ -11,8 +11,9 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-12 col-xl-10">
             <div class="card-footer text-end p-3">
-    
+    {% if user.is_superuser %}
                 <a href="{% url 'evaluation:task_create' %}"><button class="btn btn-primary">Add Task</button></a>
+              {% endif %}
               </div>
   
           <div class="card mask-custom">
