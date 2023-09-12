@@ -22,7 +22,9 @@
                                     <ul class="nav nav-pills nav-stacked d-flex  ">
                                         <li class="active me-5 el col-12 "><a href="#"> <i class="fa fa-user ps-2  "></i> Profile </a></li>
                                         <li class=" el col-12"><a href="#"> <i class="fa fa-calendar ps-2 "></i> project</a></li>
+                                        {% if user.is_superuser or user.id == profile_user.id %}
                                         <li class=" el col-12"><a href="{% url 'account:edit_profile' user_id=profile_user.id %}"> <i class="fa fa-edit ps-2 "></i> Edit profile</a></li>
+                                        {% endif %}
                                     </ul>
                       </div>
                     </div>
