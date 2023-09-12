@@ -47,7 +47,7 @@ def login_view(request):
                 if user is not None:
                     login(request, user)
                     if user.is_superuser:
-                        return redirect("account:all_emploee")
+                        return redirect("account:home")
                     else:
                         return redirect('evaluation:task_list')
                 else:
@@ -107,8 +107,7 @@ def register_employee(request):
         return render(request, "account:login")
 
     
-
-        
+    return render(request, "accounts/regester.html", {"users": user})        
 
 
 def edit_profile(request, user_id):

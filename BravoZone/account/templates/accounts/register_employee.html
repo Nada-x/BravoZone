@@ -10,8 +10,9 @@
                 class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <h1 class="text-center txt fw-bold">Register Employee</h1>
-    <form method="POST" enctype="multipart/form-data" action="{% url 'account:register_employee' %}">
+            <h1 class="text-center txt fw-bold">Register Employee</h1>
+   
+            <form method="POST" enctype="multipart/form-data" action="{% url 'account:register_employee' %}">
         {% csrf_token %}
         <div class="row">
             <div class="col-md-6 mb-4">
