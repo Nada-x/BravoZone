@@ -42,7 +42,7 @@
                       {% endwith %}
                     </th>
                     <td class="align-middle">
-                      <a href="{% url 'evaluation:task_detail' task.id %}"><span>{{ task.content }}</span></a>
+                      <a href="{% url 'evaluation:task_detail' task.id %}"><span>{{ task.name }}</span></a>
                     </td>
                     <td class="align-middle">
                       {% if task.status == 'completed' %}
@@ -53,15 +53,18 @@
                       <h6 class="mb-0"><span class="badge bg-success">In Process</span></h6>
                       {% endif %}
 
-                      {% if task.status == 'deletion' %}
-                      <h6 class="mb-0"><span class="badge bg-warning">Deletion </span></h6>
+                      {% if task.status == 'not_started' %}
+                      <h6 class="mb-0"><span class="badge bg-warning">Not Started</span></h6>
                       {% endif %}
                     </td>
                     
                     <td class="align-middle">
                      
-                      <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                          class="fas fa-trash-alt fa-lg text-warning"></i></a>
+                      <a href="{% url 'evaluation:delete_task' task.id %}" data-mdb-toggle="tooltip" title="Remove">
+                        <i class="bi bi-trash text-black"></i>
+                        <!-- <i class="fas fa-trash-alt fa-lg text-warning"></i> -->
+                          
+                        </a>
                     </td>
                   </tr>
                   {% endfor %}

@@ -50,14 +50,14 @@
                 {%endif%}
                 {% if request.user.is_authenticated and not request.user.is_superuser %}
                 <li><a class="nav-link scrollto" href="{%url 'account:profile'%}">Profile</a></li>
-                <li><a class="nav-link scrollto " href="{%url 'main:leader_bord'%}">leaderbord</a></li>
-                <li><a class="nav-link scrollto " href="{% url 'evaluation:task_list' %}">My task</a></li>
+                <li><a class="nav-link scrollto " href="{%url 'main:leader_bord'%}">leaderboard</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'evaluation:my_task_list' %}">My task</a></li>
                 <li><a class="nav-link scrollto " href="{% url 'account:all_emploee' %}">All employee</a></li>
                 <li><a class="nav-link scrollto" href="#">{{ user.first_name }}</a></li>
 
                 {%endif%}
                 {% if request.user.is_superuser %}
-                <li><a class="nav-link scrollto " href="{%url 'main:leader_bord'%}">leaderbord</a></li>
+                <li><a class="nav-link scrollto " href="{%url 'main:leader_bord'%}">leaderboard</a></li>
                 <li><a class="nav-link scrollto " href="{% url 'evaluation:task_list' %}">All tasks</a></li>
                 <li><a class="nav-link scrollto " href="{% url 'account:all_emploee' %}">All employee</a></li>
                 <li><a class="nav-link scrollto" href="#">{{ user.username }}</a></li>
@@ -107,12 +107,11 @@
                 <div class="col-lg-2 col-md-6 footer-links">
                   <h4>Our team</h4>
                   <ul>
-
+                    <li><a href="#">Basma Alshahrani</a></li>
                     <li><a href="#">Ghaida allhyani</a></li>
                     <li><a href="#">Nada Almutairi</a></li>
-                    <li><a href="#">Manal Alzahrani</a></li>
                     <li><a href="#">Lama Alsharif</a></li>
-                    <li><a href="#">Basma Alshahrani</a></li>
+                    <li><a href="#">Manal Alzahrani</a></li>
                   </ul>
                 </div>
 

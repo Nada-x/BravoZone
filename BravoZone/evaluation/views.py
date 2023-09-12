@@ -31,12 +31,19 @@ def task_list(request):
     all_tasks = None
     if request.user.is_superuser:
         all_tasks = Task.objects.all()
+    # else:
+    #     all_tasks = Task.objects.filter(assigned_to=request.user.id)
     return render(request, 'evaluation/task_list.html', {'all_tasks': all_tasks})
 
+
+def my_tasks(request):
+    all_tasks = Task.objects.filter(assigned_to=request.user.id)
+    return render(request, 'evaluation/mytask.html', {'all_tasks': all_tasks})
 
 def task_detail(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     task.update_status() 
+    print(f"user: {request.user}, task_assigned_to: {task.assigned_to}")
     return render(request, 'evaluation/task_detail.html', {'task': task})
 
 
@@ -49,3 +56,9 @@ def update_task_status(request, task_id):
         task.save()
             
         return redirect('evaluation:task_detail', task_id=task_id)
+
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+
+    task.delete()
+    return redirect('evaluation:task_list')
