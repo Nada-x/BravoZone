@@ -70,6 +70,7 @@ def profile(request, user_id=None):
     return render(request, "accounts/profile.html", { 'profile_user': profile_user })
 
 def all_emploee(request):
+    users = User.objects.filter(is_superuser=False, is_staff=False)
     return render(request, "accounts/all_employee.html")
 
 def register_employee(request):
@@ -82,21 +83,10 @@ def register_employee(request):
                 if employee_form.is_valid():
                     employee = employee_form.save()
     
-                    employee.save()
-                    return redirect(f"account/profile/{employee.id}")
-            else:
-                employee_form = SignUpEmployeeForm(request.POST, request.FILES)
-            return render(
-                request,
-                "accounts/register_employee.html",
-                {"employee_form": employee_form},
-            )
-        else:
-            return render(request, '<h1>You are not Allowed.</h1>')
-    else:
-        return render(request, 'account:login')
-            
-    
+
+    return render(request, "accounts/all_employee.html", {"users": users})
+        
+
 # def edit_profile(request, user_id):
 #     user = User.objects.get(pk=user_id)
 #     education_form = EducationalQualificationForm(request.POST)
