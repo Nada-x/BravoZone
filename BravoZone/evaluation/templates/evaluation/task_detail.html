@@ -30,6 +30,7 @@
                                                         </div>
                                                         <h6><span class="pointptn">Points : {{ task.points }}🌟</span></h6>
                                                         {{ task.status }}
+                                                        {% if user == task.assigned_to %}
                                                         {% if task.status != 'completed' %}
                                                             <form method="POST" action="{% url 'evaluation:update_task_status' task.id %}">
                                                                 {% csrf_token %}
@@ -38,8 +39,9 @@
                                                                     <option value="in_progress">In Progress</option>
                                                                     <option value="not_started">Not Started</option>
                                                                 </select>
-                                                                <button type="submit">Save.</button>
+                                                                <button type="submit">Save</button>
                                                             </form>
+                                                        {% endif %}
                                                         {% endif %}
                                                     </div>
                                                 </div>

@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-{% block title %} Leader Bord  {% endblock %}
+{% block title %} LeaderBoard  {% endblock %}
 {% block content %}
 
 <div class="container employee">
@@ -7,70 +7,72 @@
     <div class="container">
         <div class="text-center pt-3 pb-2 d-flex justify-content-center ">
                       
-            <h2 class="text-black mb-5"> <span> <i class="bi bi-list-stars"></i></span> LeaderBord </h2>
+            <h2 class="text-black mb-5"> <span> <i class="bi bi-list-stars"></i></span> LeaderBoard </h2>
           </div>
         <div class="row">
-           
+           {% for employee in first_three_employees %}
+           {% if forloop.counter == 1 %}
+            
             <div class="col-md-4">
                 <div class="card user-card">
                     <div class="card-header">
-                        <h6 class="mb-0 display-6 "><span class="badge bg-c-blue rounded-5 ">1st </span></h6>
+                        <h6 class="mb-0 display-6 "><span class="badge bg-c-blue rounded-5 ">{{forloop.counter}}st </span></h6>
                     </div>
                     <div class="card-block">
                         <div class="user-image">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-radius " >
+                            <img src="{{ employee.employee.profile_picture.url }}" class="img-radius " >
                         </div>
-                        <h6 class="f-w-600 m-t-25 m-b-10"> Name:</h6>
+                        <h6 class="f-w-600 m-t-25 m-b-10">{% if employee.employee.first_name %}{{ employee.employee.first_name }} {{ employee.employee.last_name }}{% else %} {{ employee.employee.username }} {% endif %}</h6>
                         <hr>
-                        <p class="text-secsuss m-t-15">task number: 5 <i class="bi bi-star-fill"></i></p>
+                        <p class="text-muted m-t-15">Point: {{ employee.total_points }} <i style="color: #ffcc00;" class="bi bi-star-fill"></i></p>
                      
     
                         <div class="bg-c-blue counter-block m-t-10 p-30 rounded">
-                            <a class="btn text-light ">Read More</a>
-
+                          <a class="btn text-light" href="/account/profile/{{employee.employee.id}}">Read More</a>
                         </div>
                        
                        
                     </div>
                 </div>
             </div>
-            
+            {% endif %}
+            {% if forloop.counter == 2 %}
             <div class="col-md-4">
                 <div class="card user-card">
                     <div class="card-header">
-                        <h6 class="mb-0 display-6 "><span class="badge bg-c-green rounded-5 ">2st </span></h6>
+                        <h6 class="mb-0 display-6 "><span class="badge bg-c-green rounded-5 ">{{ forloop.counter }}nd </span></h6>
                     </div>
                     <div class="card-block">
                         <div class="user-image">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{ employee.employee.profile_picture.url }}" class="img-radius" alt="User-Profile-Image">
                         </div>
-                        <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
+                        <h6 class="f-w-600 m-t-25 m-b-10">{% if employee.employee.first_name %}{{ employee.employee.first_name }} {{ employee.employee.last_name }}{% else %} {{ employee.employee.username }} {% endif %}</h6>
                         <hr>
-                        <p class="text-muted m-t-15">Point: 87 <i class="bi bi-star-fill"></i></p>
+                        <p class="text-muted m-t-15">Points: {{ employee.total_points }} <i style="color: #ffcc00;" class="bi bi-star-fill"></i></p>
                    
                         <div class="bg-c-green counter-block m-t-10 p-30 rounded">
-                            <a class="btn text-light ">Read More</a>
+                            <a class="btn text-light" href="/account/profile/{{employee.employee.id}}">Read More</a>
                         </div>
                        
                     </div>
                 </div>
             </div>
-            
+            {% endif %}
+            {% if forloop.counter == 3 %}
             <div class="col-md-4">
                 <div class="card user-card">
                     <div class="card-header">
-                        <h6 class="mb-0 display-6 "><span class="badge bg-c-yellow rounded-5 ">2st </span></h6>
+                        <h6 class="mb-0 display-6 "><span class="badge bg-c-yellow rounded-5 ">{{ forloop.counter }}rd </span></h6>
                     </div>
                     <div class="card-block">
                         <div class="user-image">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{ employee.employee.profile_picture.url }}" class="img-radius" alt="User-Profile-Image">
                         </div>
-                        <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
+                        <h6 class="f-w-600 m-t-25 m-b-10">{% if employee.employee.first_name %}{{ employee.employee.first_name }} {{ employee.employee.last_name }}{% else %} {{ employee.employee.username }} {% endif %}</h6>
                         <hr>
-                        <p class="text-muted m-t-15">Activity Level: 87<i class="bi bi-star-fill"></i></p>
+                        <p class="text-muted m-t-15">Points: {{ employee.total_points }} <i style="color: #ffcc00;" class="bi bi-star-fill"></i></p>
                         <div class="bg-c-yellow counter-block m-t-10 p-30 rounded">
-                            <a class="btn text-light">Read More</a>
-
+                          <a class="btn text-light" href="/account/profile/{{employee.employee.id}}">Read More</a>
                         </div>
                        
                       
@@ -80,7 +82,9 @@
                 
                 
             </div>
-            
+            {% endif %}
+
+            {% endfor %}
         </div>
         <div class="row">
             <div class="col-md-12 col-xl-12">
@@ -103,54 +107,26 @@
                         </tr>
                       </thead>
                       <tbody>
-
+                        {% for employee in ordered_list %}
+                        {% if forloop.counter > 3 and forloop.counter <= 10 %}
                         <tr class="fw-normal">
-                            <th>4th</th>
+                          <th>{{ forloop.counter }}th</th>
                           <th>
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                            <img src="{{ employee.employee.profile_picture.url }}"
                               alt="avatar 1" style="width: 45px; height: auto;">
-                            <span class="ms-2">Alice Mayer</span>
+                            <span class="ms-2">{% if employee.employee.first_name %}{{ employee.employee.first_name }} {{ employee.employee.last_name }}{% else %} {{ employee.employee.username }} {% endif %}</span>
                           </th>
                           <td class="text-center">
-                            <h6 class="mb-0"><span class="badge bg-c-yellow p-3 rounded-5">Point : 200</span></h6>
+                            <h6 class="mb-0"><span class="badge bg-c-yellow p-3 rounded-5">Points : {{ employee.total_points }}</span></h6>
                           </td>
                           <td class="align-middle">
-                            <h6 class="mb-0"><span class="">5 Task</span></h6>
+                            <h6 class="mb-0"><span class="">{{ employee.number_of_tasks }} Task</span></h6>
                           </td>
                          
                         </tr>
-                        <tr class="fw-normal">
-                            <th>4th</th>
-                          <th>
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                              alt="avatar 1" style="width: 45px; height: auto;">
-                            <span class="ms-2">Kate Moss</span>
-                          </th>
-                          <td class="text-center">
-                            <h6 class="mb-0"><span class="badge bg-c-yellow p-3 rounded-5">Point : 200</span></h6>
-                          </td>
-                          <td class="align-middle">
-                            <h6 class="mb-0"><span class="">5 Task</span></h6>
-                          </td>
+                      {% endif %}
                           
-                        </tr>
-                        <tr class="fw-normal">
-                            <th>4th</th>
-                          <th>
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
-                              alt="avatar 1" style="width: 45px; height: auto;">
-                            <span class="ms-2">Danny McChain</span>
-                          </th>
-                          <td class="text-center">
-                            <h6 class="mb-0"><span class="badge bg-c-yellow p-3 rounded-5">Point : 200</span></h6>
-                          </td>
-                          <td class="align-middle">
-                            <h6 class="mb-0"><span class="">5 Task</span></h6>
-                          </td>
-                          
-                        </tr>
-                          
-                       
+                       {% endfor %}
                       </tbody>
                     </table>
         

@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
+
+from evaluation.models import Task
 from .forms import SignUpEmployeeForm, SignUpForm, EducationalQualificationForm
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 from .models import User, EducationalQualification
 from django.contrib.auth import logout
+
+from evaluation.models import Task
 
 
 def home(request):
@@ -69,16 +73,34 @@ def profile(request, user_id=None):
         print(profile_user)
     else:
         profile_user = User.objects.get(pk=request.user.id)
+        # tasks_list = Task.objects.filter(assigned_to=profile_user, status='completed')
+        # print(tasks_list)
         print(profile_user)
 
-    return render(request, "accounts/profile.html", {"profile_user": profile_user})
+    task_list = Task.objects.filter(assigned_to=profile_user, status='completed')
+    print(task_list)
+    return render(request, "accounts/profile.html", {"profile_user": profile_user, 'task_list': task_list})
 
 
 def all_emploee(request):
-    users = User.objects.filter(is_superuser=False, is_staff=False)
+    employees = User.objects.filter(is_superuser=False, is_staff=False)
+    
+    leaderboard_list = []
+    for employee in employees:
+        employee_tasks = Task.objects.filter(assigned_to=employee)
+        print(employee_tasks)
+        completed_tasks_points = []
+        for task in employee_tasks:
+            if task.status == 'completed':
+                completed_tasks_points.append(int(task.points))
+            
+        print(completed_tasks_points)
+
+        leaderboard_list.append({'employee': employee, 'number_of_tasks': len(employee_tasks),'total_points':sum(completed_tasks_points)})
+        print(leaderboard_list)
 
 
-    return render(request, "accounts/all_employee.html", {"users": users})
+    return render(request, "accounts/all_employee.html", {"users": leaderboard_list})
 
 
 def register_employee(request):
@@ -107,7 +129,7 @@ def register_employee(request):
         return render(request, "account:login")
 
     
-    return render(request, "accounts/regester.html", {"users": user})        
+    # return render(request, "accounts/regester.html", {"users": user})        
 
 
 def edit_profile(request, user_id):
