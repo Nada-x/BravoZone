@@ -10,8 +10,8 @@
                 class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <h1 class="text-center txt fw-bold">Signup </h1>
-    <form method="POST" enctype="multipart/form-data">
+                <h1 class="text-center txt fw-bold">Manager Sign Up</h1>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'account:signup' %}">
         {% csrf_token %}
         <div class="row">
             <div class="col-md-6 mb-4">
@@ -19,33 +19,24 @@
           {{ user_form.username }} 
             <label for="id_password1" class="form-label txt fw-bold fontsize">Password:</label>
             {{ user_form.password1 }}
-            <label for="id_employee_number" class="form-label txt fw-bold fontsize">Employee Number:</label>
-            {{ user_form.employee_number }}
+    
             <label for="id_role"class="form-label txt fw-bold fontsize mt-4">Role:</label>
             {{ user_form.role }}
-            <label for="id_major"class="form-label txt fw-bold fontsize">Major:</label>
-            {{ qualification_form.major }}
-            <label for="id_degree"class="form-label txt fw-bold fontsize">Degree:</label>
-            {{ qualification_form.degree }}
+          
             <label for="id_profile_picture"class="form-label txt fw-bold fontsize">Profile Picture:</label>
-            {{ qualification_form.profile_picture }}
+            {{ user_form.profile_picture }}
         </div>
         <div class="col-md-6 mb-4">
             <label for="id_email"class="form-label txt fw-bold fontsize">Email:</label>
             {{ user_form.email }} 
             <label for="id_password2"class="form-label txt fw-bold fontsize">Confirm Password:</label>
             {{ user_form.password2 }}
-            <label for="id_skills"class="form-label txt fw-bold fontsize">Skills:</label>
-            {{ skill_form.skills }}
-            <label for="id_university_name"class="form-label txt fw-bold fontsize">University Name:</label>
-            {{ qualification_form.university_name }}
-            <label for="id_academic_rank"class="form-label txt fw-bold fontsize">Academic Rank:</label>
-            {{ qualification_form.academic_rank }}
+          
            
         </div>
         <div class="text-center  mt-4 pt-2">
             <button type="submit" class="btn btn-primary btn-lg "
-              style="padding-left: 2.5rem; padding-right: 2.5rem; ">Signup</button>
+              style="padding-left: 2.5rem; padding-right: 2.5rem; ">Sign Up</button>
           </div>
         <!-- <input type="submit" value="Sign Up"> -->
     </form>
