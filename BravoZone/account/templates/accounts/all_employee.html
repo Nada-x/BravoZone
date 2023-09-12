@@ -7,6 +7,9 @@
     <div class="container">
         <div class="row">
             {% for employee in users %}
+
+            {% with employee.education.all|first as education  %}
+
             <div class="col-md-4">
                 <div class="card user-card">
                     <div class="card-header">
@@ -14,12 +17,13 @@
                     </div>
                     <div class="card-block">
                         <div class="user-image">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{ employee.profile_picture.url }}" class="img-radius" alt="User-Profile-Image">
                         </div>
-                        <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
-                        <p class="text-muted">Email: </p>
+                        <h6 class="f-w-600 m-t-25 m-b-10">{% if employee.first_name %} {{ employee.first_name }} {{ employee.last_name }} {% else %} {{ employee.username }} {% endif %}</h6>
+                        <p class="text-muted">Email: {{ employee.email }}</p>
                         <hr>
                         <p class="text-secsuss m-t-15">Points: 87 <i class="bi bi-star-fill"></i></p>
+                        
                         <ul class="list-unstyled activity-leval">
                             <li class="active"></li>
                             <li class="active"></li>
@@ -29,15 +33,17 @@
                         </ul>
     
                         <div class="bg-c-blue counter-block m-t-10 p-30 rounded">
-                           <a class="btn text-light">Read More</a>
+                           <a class="btn text-light" href="/account/profile/{{employee.id}}">Read More</a>
                         </div>
-                        <p class="m-t-15 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p class="m-t-15 text-muted">{{ employee.bio }}</p>
                         <hr>
                        
                     </div>
                 </div>
             </div>
-            
+            {% endwith %}
+            {% endfor %}
+<!--             
             <div class="col-md-4">
                 <div class="card user-card">
                     <div class="card-header">
@@ -61,7 +67,7 @@
                         <div class="bg-c-green counter-block m-t-10 p-30 rounded">
                             <a class="btn text-light">Read More</a>
                         </div>
-                        <p class="m-t-15 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p class="m-t-15 text-muted">fdjlsjfdls</p>
                         <hr>
                        
                     </div>
@@ -101,7 +107,7 @@
                 
                 
             </div>
-            
+             -->
         </div>
     </div>
     

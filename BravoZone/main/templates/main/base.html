@@ -48,11 +48,27 @@
                 <li><a class="nav-link scrollto " href="{%url 'main:home_view'%}">Home</a></li>
                 {%endif%}
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto " href="{%url 'main:leader_bord'%}">leaderbord</a></li>
+                {% if user.is_authenticated %}
                 <li><a class="nav-link scrollto" href="{%url 'account:profile'%}">Profile</a></li>
                 <li><a class="nav-link scrollto " href="{% url 'evaluation:task_list' %}">My task</a></li>
-                <li><a class="nav-link scrollto " href="{% url 'evaluation:task_list' %}">All tasks</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'evaluation:task_list' %}">All task</a></li>
                 <li><a class="nav-link scrollto " href="{% url 'account:all_emploee' %}">All employee</a></li>
+
+                <li><a class="nav-link scrollto" href="{% url 'account:profile'%}">{% if user.first_name %}{{ user.first_name }} {{ user.last_name }}{% else %} {{ user.username }} {% endif %}</a></li>
+              </li>
+              
+              <li><a class="nav-link scrollto" href="{% url 'account:profile'%}" > 
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>  
+              </a></li>
+             
+                <li><a class="nav-link scrollto" href="{% url 'account:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a class="nav-link scrollto" href="{% url 'account:login' %}">Login</a></li>
+
+              {% endif %}
                 
                 <li><a class="nav-link scrollto" href="#">{{ user.username }}</a></li>
      
@@ -100,20 +116,21 @@
                   <h4>Our team</h4>
                   <ul>
                     <li><a href="#">Ghaida allhyani</a></li>
-                    <li><a href="#">Nada Almutairi</a></li>
-                    <li><a href="#">Basma Alshahrani</a></li>
-                    <li><a href="#">Lama Alsharif</a></li>
-                    <li><a href="#">Manal Alzahrani</a></li>
+                    <li><a href="#">Nada musaad</a></li>
+                    <li><a href="#">basmah</a></li>
+                    <li><a href="#">lama</a></li>
+                    <li><a href="#">manal</a></li>
                   </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-contact">
                   <h4>Contact Us</h4>
                   <p>
-                    Saudi Arabia, Riyadh<br>
-                    AlMalqa <br>
-                    <strong>Phone:</strong> +966 557141552<br>
-                    <strong>Email:</strong> Nadaamusaad@gmail.com<br>
+                    A108 Adam Street <br>
+                    New York, NY 535022<br>
+                    United States <br>
+                    <strong>Phone:</strong> +1 5589 55488 55<br>
+                    <strong>Email:</strong> info@example.com<br>
                   </p>
 
                   <div class="social-links">
@@ -137,7 +154,7 @@
 
           <div class="container">
             <div class="copyright">
-              &copy; Copyright <strong>BravoZone</strong>. All Rights Reserved
+              &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
             </div>
          
           </div>

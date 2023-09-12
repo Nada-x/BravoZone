@@ -1,6 +1,9 @@
 {% extends 'main/base.html' %}
 {% block title %} Edit profile  {% endblock %}
 {% block content %}
+<form method="POST" enctype="multipart/form-data" action="{% url 'account:edit_profile' user_id=profile_id %}">
+    {% csrf_token %}
+    
     <section id="" class="profile">
         <div class="container m-5">
             <div class="container bootstrap snippets bootdey">
@@ -10,10 +13,10 @@
                           <div class="user-heading round">
                            {% with profile_user.education.all|first as education %}
                               <a href="#">
-                                 <img src="{{ education.profile_picture.url }}" style="width: 150px;" alt="Profile Picture">
+                                 <img src="{{ profile_user.profile_picture.url }}" style="width: 150px;" alt="Profile Picture">
                                                                 </a>
-                                    <h1>{{ profile_user.username }}</h1>
-                                    <p>{{ profile_user.email }}</p>
+                                                                <h1>{% if profile_user.first_name %}{{ profile_user.first_name }} {{ profile_user.last_name }}{% else %} {{ profile_user.username }} {% endif %}</h1>
+                                                                <p>{{ profile_user.email }}</p>
                           </div>
                                     </ul>
                       </div>
@@ -22,30 +25,36 @@
                             
                             <div class="panel">
                                 <div class="bio-graph-heading">
-                                   ++add نبذة عنه Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.
+                                <textarea name="bio" style="width: 100%;">{{ profile_user.bio }}</textarea>
                                 </div>
                         <div class="panel-body bio-graph-info p-5">
-                        <h1>University:<input type="text" class="form-control" value="{{ education.university_name }}"/></h1>
+                        <h1>University:<input type="text" class="form-control" name="university_name" value="{{ education.university_name }}"/></h1>
                         <div class="row">
                         <div class="bio-row">
-                            <p><span>Name </span>:<input type="text" class="form-control" value="{{ profile_user.employee_number }}"/></p>
+                            <p><span>First Name </span>:<input type="text" class="form-control" name="first_name" value="{{ profile_user.first_name }}"/></p>
                         </div>
                         <div class="bio-row">
-                        <p><span>Email: </span> <input type="text" class="form-control" value="{{ profile_user.email }}"/></p>
-                       
-                        
+                            <p><span>Last Name: </span> <input type="text" class="form-control" name="last_name" value="{{ profile_user.last_name }}"/></p>
+                            
+                            </div>
+                        <div class="bio-row">
+                        <p><span>Email: </span> <input type="text" class="form-control" name="email" value="{{ profile_user.email }}"/></p>
                         </div>
                         <div class="bio-row">
                         <p><span>Skills </span>
-                            <ul>
-                                {% for Skill in profile_user.skills.all %}
-                                :{{ Skill.name }}</p>
-                                {% endfor %}
+                                {{ education_form.skills }}
+                                </p>
                         </div>
                         <div class="bio-row">
-                        <p><span>Major </span>: <input type="text" class="form-control" value="{{ education.major }}"/> </p>
+                        <p><span>Major </span>: <input type="text" class="form-control" name="major" value="{{ education.major }}"/> </p>
                         </div>
-                
+                        <div class="bio-row">
+                            <p><span>Degree </span>: <input type="text" class="form-control" name="degree" value="{{ education.degree }}"/> </p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Academic Rank </span>: <input type="text" class="form-control" name="academic_rank" value="{{ education.academic_rank }}"/> </p>
+                                </div>
+                        <button type="submit">Update</button>
                         </div>
                         </div>
                         </div>
@@ -118,6 +127,7 @@
                         </div>
                         
                         </section>
+                    </form>
                         
                         {%endblock%}
 
