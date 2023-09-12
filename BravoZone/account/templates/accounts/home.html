@@ -1,42 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home Page</title>
-</head>
-<body>
-    {% if user.is_superuser %}
-    <h2>Managers Page ({{ user.username }})</h2>
-    <h1>Users</h1>
-    <ul>
-        {% for employee in users %}
-        <li style="float: left; margin: 10px;">
+{% extends 'main/base.html' %}
+{% block title %} Home  {% endblock %}
+{% block content %}
+  {% if user.is_superuser %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="clearfix ">
+    <div class="container m-5" data-aos="fade-up ">
+
+      <div class="hero-img" data-aos="zoom-out" data-aos-delay="200">
+        <img src="/static/img/hero-img.svg" alt="" class="img-fluid">
+      </div>
+
+      <div class="hero-info" data-aos="zoom-in" data-aos-delay="100">
+        <h2>Managers Page <br></h2>
+        <h2 class="p-5 ">[ {{ user.username }} ]</h2>
+        <div>
+            <a href="{%url 'account:signup'%}" class="btn-get-started scrollto">Add Employee</a>
+            <a href="{%url 'account:login'%}" class="btn-services scrollto">Logout</a>
+          </div>
+      </div>
+
+    </div>
+  </section><!-- End Hero Section -->
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="section-">
+        <div class="container" data-aos="fade-up">
+  
+          <header class="section-header  m-5">
+            <h3>Employee</h3>
+          </header>
+  
+          <div class="row justify-content-center">
+  
+            {% for employee in users %}
             {% with employee.education.all|first as education  %}
-            <h2>{{ employee.username }}</h2>
-            <img src="{{ education.profile_picture.url }}" style="width: 70px;" alt="Profile Picture">
-            <p>Employee Number: {{ employee.employee_number }}</p>
-            <p>Email: {{ employee.email }}</p>
-            <p>Skills:</p>
-            <ul>
-                {% for skill in employee.skills.all %}
-                <li>{{ skill.name }}</li>
-                {% endfor %}
-            </ul>
-            <p>University: {{ education.university_name }}</p>
-            <p>Major: {{ education.major }}</p>
-            <p>Degree: {{ education.degree }}</p>
-            <p>Academic Rank: {{ education.academic_rank }}</p>
-            <a href="/evaluation/tasks/create?assigned_to={{employee.id}}">Assign Task</a>
-            <a href="{% url 'account:user_profile' user_id=employee.id  %}">View Profile</a>
+            <div class="col-md-6 col-lg-5" data-aos="zoom-in" data-aos-delay="200">
+              <div class="box">
+                <div class="icon"><i class="bi bi-card-checklist" style="color: #e9bf06;"></i></div>
+                <h4 class="title"><a href="">{{ employee.username }}</a></h4>
+                <p class="description">Employee Number: {{ employee.employee_number }}</p>
+                <p class="description">Email: {{ employee.email }}</p>
+                <a class="btn" style="color: #e9bf06;" href="/evaluation/tasks/create?assigned_to={{employee.id}}">Assign Task</a>
+                <a class="btn" style="color: #e9bf06;" href="{% url 'account:user_profile' user_id=employee.id  %}">View Profile</a>
+    
+              </div>
+
+            </div>
             {% endwith %}
-            {% if user.username == employee.username %}
-            <a href="{% url 'account:logout' %}">Logout</a>
-            {% endif %}
-            </li>
             {% endfor %}
-        </ul>
-        {% else %}
-        <h2>You are not Allowed Here.</h2>
-        <p>Visit The <a href="{% url 'evaluation:task_list' %}">tasks</a> Page if you want</p>
-        {% endif %}
-</body>
-</html>
+            {% endif %}
+
+          </div>
+  
+        </div>
+      </section><!-- End Services Section -->
+{%endblock%}

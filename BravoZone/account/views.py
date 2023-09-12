@@ -77,6 +77,7 @@ def profile(request, user_id=None):
 def all_emploee(request):
     users = User.objects.filter(is_superuser=False, is_staff=False)
 
+
     return render(request, "accounts/all_employee.html", {"users": users})
 
 
@@ -89,6 +90,7 @@ def register_employee(request):
                 print(employee_form)
                 if employee_form.is_valid():
                     employee = employee_form.save()
+
 
                     employee.save()
                     return redirect(f"/account/profile/{employee.id}")
@@ -103,6 +105,10 @@ def register_employee(request):
             return render(request, "<h1>You are not Allowed.</h1>")
     else:
         return render(request, "account:login")
+
+    
+
+        
 
 
 def edit_profile(request, user_id):
