@@ -50,9 +50,12 @@
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li><a class="nav-link scrollto " href="{%url 'main:leader_bord'%}">leaderbord</a></li>
                 <li><a class="nav-link scrollto" href="{%url 'account:profile'%}">Profile</a></li>
-                <li><a class="nav-link scrollto " href="{% url 'evaluation:task_list' %}">My task</a></li>
+                {% if request.user.is_superuser %}
                 <li><a class="nav-link scrollto " href="{% url 'evaluation:task_list' %}">All tasks</a></li>
-                <li><a class="nav-link scrollto " href="{% url 'account:all_emploee' %}">All employee</a></li>
+                {%else%}
+                <li><a class="nav-link scrollto " href="{% url 'evaluation:task_list' %}">My task</a></li>
+                {%endif%}
+                <li><a class="nav-link scrollto " href="{% url 'account:all_emploee' %}">All employees</a></li>
                 
                 <li><a class="nav-link scrollto" href="#">{{ user.username }}</a></li>
      

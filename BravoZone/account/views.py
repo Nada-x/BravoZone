@@ -83,8 +83,7 @@ def register_employee(request):
                 if employee_form.is_valid():
                     employee = employee_form.save()
     
-
-    return render(request, "accounts/all_employee.html", {"users": users})
+    return render(request, "accounts/regester.html", {"users": user})
         
 
 # def edit_profile(request, user_id):
