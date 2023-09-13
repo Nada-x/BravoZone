@@ -36,6 +36,7 @@ Website Wireframe :
 
 https://www.canva.com/design/DAFtwJrs9XU/eN_YQ5nnB2fHCpDeD3WqEw/edit?utm_content=DAFtwJrs9XU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
+Note: To start use our plattform You should creat admin from Terminal.
 
 Team Members:
 * Nada Almutairi (Leader)
