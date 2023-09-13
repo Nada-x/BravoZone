@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-{% block title %} Home  {% endblock %}
+{% block title %} Admin View {% endblock %}
 {% block content %}
   {% if user.is_superuser %}
   <!-- ======= Hero Section ======= -->
@@ -11,8 +11,8 @@
       </div>
 
       <div class="hero-info" data-aos="zoom-in" data-aos-delay="100">
-        <h2>Managers Page <br></h2>
-        <h2 class="p-5 ">[ {{ user.username }} ]</h2>
+        <h2>Manager Page <br></h2>
+        <h2 class="mt-5 mb-5 ms-5 text-decoration-none display-6 text-warning  "> {{ user.username }} </h2>
         <div>
             <a href="{%url 'account:register_employee'%}" class="btn-get-started scrollto">Add Employee</a>
             <a href="{%url 'account:logout'%}" class="btn-services scrollto">Logout</a>
@@ -26,7 +26,7 @@
         <div class="container" data-aos="fade-up">
   
           <header class="section-header  m-5">
-            <h3>Employee</h3>
+            <h3>Employees</h3>
           </header>
   
           <div class="row justify-content-center">

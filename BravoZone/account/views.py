@@ -13,7 +13,7 @@ from evaluation.models import Task
 def home(request):
     # users = User.objects.all()
     users = User.objects.filter(is_superuser=False, is_staff=False)
-    return render(request, "accounts/home.html", {"users": users})
+    return render(request, "accounts/admin_view.html", {"users": users})
 
 
 def signup(request):
@@ -53,7 +53,7 @@ def login_view(request):
                     if user.is_superuser:
                         return redirect("account:home")
                     else:
-                        return redirect('evaluation:task_list')
+                        return redirect('main:home_view')
                 else:
                     form.add_error(None, "Invalid username or password.")
         else:
@@ -73,8 +73,7 @@ def profile(request, user_id=None):
         print(profile_user)
     else:
         profile_user = User.objects.get(pk=request.user.id)
-        # tasks_list = Task.objects.filter(assigned_to=profile_user, status='completed')
-        # print(tasks_list)
+      
         print(profile_user)
 
     task_list = Task.objects.filter(assigned_to=profile_user, status='completed')
@@ -153,7 +152,6 @@ def edit_profile(request, user_id):
                 education_user[0].skills.set(skills)
                 education_user[0].major = request.POST.get("major")
                 education_user[0].degree = request.POST.get("degree")
-                education_user[0].academic_rank = request.POST.get("academic_rank")
 
                 education_user[0].university_name = request.POST.get("university_name")
                 education_user[0].save()

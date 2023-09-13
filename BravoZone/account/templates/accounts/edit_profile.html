@@ -13,12 +13,16 @@
                           <div class="user-heading round">
                            {% with profile_user.education.all|first as education %}
                               <a href="#">
-                                 <img src="{{ profile_user.profile_picture.url }}" style="width: 150px;" alt="Profile Picture">
+                                 <img src="{{ profile_user.profile_picture.url }}" style="width: 130px;" alt="Profile Picture">
                                                                 </a>
-                                                                <h1>{% if profile_user.first_name %}{{ profile_user.first_name }} {{ profile_user.last_name }}{% else %} {{ profile_user.username }} {% endif %}</h1>
-                                                                <p>{{ profile_user.email }}</p>
+                                                                <h1 class="mt-4 text-light">{% if profile_user.first_name %}{{ profile_user.first_name }} {{ profile_user.last_name }}{% else %} {{ profile_user.username }} {% endif %}</h1>
+                                                                <p class="mt-4">{{ profile_user.email }}</p>
                           </div>
-                                    </ul>
+                                    
+                          <ul class="nav nav-pills nav-stacked d-flex  ">
+                            <li class=" me-5 el col-12 "><a href="{% url 'account:user_profile' user_id=profile_user.id %}"> <i class="fa fa-user ps-2  "></i> Profile </a></li>
+                            <li class="active el col-12"><a href="{% url 'account:edit_profile' user_id=profile_user.id %}"> <i class="fa fa-edit ps-2 "></i> Edit profile</a></li>
+                        </ul>
                       </div>
                     </div>
                         <div class="profile-info col-md-9">
@@ -46,79 +50,21 @@
                                 </p>
                         </div>
                         <div class="bio-row">
+                            <p>Academic Degree : <input type="text" class="form-control" name="degree" value="{{ education.degree }}"/> </p>
+                            </div>
+                        <div class="bio-row">
                         <p><span>Major </span>: <input type="text" class="form-control" name="major" value="{{ education.major }}"/> </p>
                         </div>
-                        <div class="bio-row">
-                            <p><span>Degree </span>: <input type="text" class="form-control" name="degree" value="{{ education.degree }}"/> </p>
-                            </div>
-                            <div class="bio-row">
-                                <p><span>Academic Rank </span>: <input type="text" class="form-control" name="academic_rank" value="{{ education.academic_rank }}"/> </p>
-                                </div>
-                        <button type="submit">Update</button>
+                        
+                            
+                               
+                        <button type="submit" >Update</button>
                         </div>
                         </div>
                         </div>
                         <div>
                         {% endwith %}
                       
-                        <div class="row">
-                        
-                        <div class="col-md-6 panel-body ps-0 pe-0 m-3">
-                            
-                            <div class="panel">
-                                <div class="panel p-2 text-light" style="  background-color: #00428a"> 
-                                    <h5 class="  ">Experience</h5>
-
-                                </div>
-                                <div class="">
-                                
-                                    <div class="bio-chart p-4">
-                                        <h6>Experience 1</h6>
-
-                                    </div>
-                                    <div class="bio-desk p-3">
-                                        <p> <textarea class="form-control" > ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea> .</p>
-                                    </div>
-                                </div>
-                                <div class="">
-                                
-                                    <div class="bio-chart p-4">
-                                        <h6>Experience 2</h6>
-
-                                    </div>
-                                    <div class="bio-desk p-3">
-                                        <p> <textarea class="form-control" > ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea> .</p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                        <div class="col-md-5 panel-body ps-0 pe-0 m-3">
-                            
-                            <div class="panel">
-                                <div class="panel p-2 text-light" style="  background-color: #00428a"> 
-                                    <h5 class="  ">Courses </h5>
-
-                                </div>
-                                <div class="">
-                                
-                                    <div class="bio-chart p-4">
-                                        <h6>Courses list: </h6>
-
-                                    </div>
-                                    <div class="bio-desk p-3">
-                                        <p> <textarea class="form-control" > ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea> .</p>
-                                        <p> <textarea class="form-control" > ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea> .</p>
-                                        <p> <textarea class="form-control" > ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea> .</p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        </div>
                         </div>
                         </div>
                         </div>
@@ -131,22 +77,4 @@
                         
                         {%endblock%}
 
-                        {% comment %} <h1>{{ profile_user.username }}</h1>
-                        {% with profile_user.education.all|first as education %}
-                        <img src="{{ education.profile_picture.url }}" style="width: 150px;" alt="Profile Picture">
-                        <p>Employee Number: {{ profile_user.employee_number }}</p>
-                        <p>Email: {{ profile_user.email }}</p>
-                        <p>Skills: {{ profile_user.skills }}</p>
-                        <p>University: {{ education.university_name }}</p>
-                        <p>Major: {{ education.major }}</p>
-                        <p>Degree: {{ education.degree }}</p>
-                        <p>Academic Rank: {{ education.academic_rank }}</p>
-                        {% endwith %}
-                        {% if user.username == profile_user.username %}
-                        <a href="{% url 'account:logout' %}">Logout</a>
-                        {% endif %} {% endcomment %}
-
-
                         
-
-

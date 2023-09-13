@@ -4,14 +4,13 @@
 <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
 
 <div class="container p-3">
-    <div class="row">
+    <div class="row mt-5 pt-5">
         <div class="col-md-">
             <div class="osahan-account-page-right shadow-lg bg-white p-4 h-100">
-                <div class="tab-content" id="myTabContent">
+                <div class="tab-content p-3 m-5" id="myTabContent">
                     <div class="tab-pane fade  active show" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
                         <h2 class=" mt-0 mb-4 fw-bold text-center"style="color: #003b7a;">My Task</h2>
                         <div class="row">  
-                             <!-------هذا الكارد احط الفور هنا -----  -->
                           {% for task in all_tasks %}
                             <div class="col-md-6">
                                 <div class="bg-white card addresses-item mb-4 shadow-lg">

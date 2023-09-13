@@ -100,17 +100,17 @@
                     <table class="table text-white mb-0">
                       <thead>
                         <tr>
-                          <th scope="col" width="10%">rank</th>
+                          <th scope="col" width="10%">Rank</th>
                           <th scope="col" width="20%">Employee</th>
-                          <th scope="col"class="text-center" width="50%">Point</th>
+                          <th scope="col"class="text-center" width="50%">Points</th>
                           <th scope="col">Tasks</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for employee in ordered_list %}
                         {% if forloop.counter > 3 and forloop.counter <= 10 %}
-                        <tr class="fw-normal">
-                          <th>{{ forloop.counter }}th</th>
+                        <tr class="fw-normal ">
+                          <th class="text-secondary">{{ forloop.counter }}th</th>
                           <th>
                             <img src="{{ employee.employee.profile_picture.url }}"
                               alt="avatar 1" style="width: 45px; height: auto;">
