@@ -18,7 +18,9 @@
                           </div>
                                     <ul class="nav nav-pills nav-stacked d-flex  ">
                                         <li class="active me-5 el col-12 "><a href="#"> <i class="fa fa-user ps-2  "></i> Profile </a></li>
+                                        {% if user.is_superuser or user.id == profile_user.id %}
                                         <li class=" el col-12"><a href="{% url 'account:edit_profile' user_id=profile_user.id %}"> <i class="fa fa-edit ps-2 "></i> Edit profile</a></li>
+                                    {%endif%}
                                     </ul>
                       </div>
                     </div>
@@ -32,13 +34,13 @@
                         <h1>University:{{ education.university_name }}</h1>
                         <div class="row">
                         <div class="bio-row">
-                            <p><span>Name</span>: {{ profile_user.username }}</p>
+                            <p>ID : {{ profile_user.username }}</p>
                         </div>
                         <div class="bio-row">
-                        <p><span>Email Employee</span>:{{ profile_user.email }}</p>
+                        <p><span>Email</span>:{{ profile_user.email }}</p>
                         </div>
                         <div class="bio-row">
-                        <p><span>Employee Skills:</span>
+                        <p><span> Skills:</span>
 
                             <ul>
                                 {% for skill in education.skills.all %}
@@ -50,7 +52,7 @@
                             <p>Academic Degree : {{ education.degree }}</p>
                             </div>
                         <div class="bio-row">
-                        <p><span>Major  </span>: {{ education.major }}</p>
+                        <p> Major  : {{ education.major }}</p>
                         </div>
                        
                         

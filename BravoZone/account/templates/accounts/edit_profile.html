@@ -21,7 +21,9 @@
                                     
                           <ul class="nav nav-pills nav-stacked d-flex  ">
                             <li class=" me-5 el col-12 "><a href="{% url 'account:user_profile' user_id=profile_user.id %}"> <i class="fa fa-user ps-2  "></i> Profile </a></li>
+                            {% if user.is_superuser or user.id == profile_user.id %}
                             <li class="active el col-12"><a href="{% url 'account:edit_profile' user_id=profile_user.id %}"> <i class="fa fa-edit ps-2 "></i> Edit profile</a></li>
+                            {%endif%}
                         </ul>
                       </div>
                     </div>
