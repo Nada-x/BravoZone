@@ -42,7 +42,7 @@ https://www.canva.com/design/DAFuVoU4a3I/AlJkk8ZaYhkH8NzzyDIDFw/edit
 
 Team Members:
 * Basmah Alshahrani
-* Nada Almutairi (Leader)
+* Nada Almutairi 
 * Ghaida Allhyani
 * Manal Alzahrani
 * Lama Alsharif
