@@ -41,10 +41,10 @@ Note: To start use our plattform You should creat admin from Terminal.
 https://www.canva.com/design/DAFuVoU4a3I/AlJkk8ZaYhkH8NzzyDIDFw/edit
 
 Team Members:
+* Basmah Alshahrani
 * Nada Almutairi (Leader)
 * Ghaida Allhyani
 * Manal Alzahrani
-* Basmah Alshahrani
 * Lama Alsharif
 
  
