@@ -4,7 +4,8 @@ Project Name : BravoZone
 
 Project Description :
 
-It's a platform for tasking and evaluating, and rewarding outstanding performance, developed for companies to foster a culture of appreciation and motivation of employees. 
+It's a platform for task assignment, evaluation, and rewarding outstanding performance in companies, with a visible leaderboard for everyone. It aims to foster a culture of appreciation, motivation, and achieve fairness.
+. 
 
 Features List:
 
